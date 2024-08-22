@@ -1,28 +1,65 @@
-<!-- <meta http-equiv="refresh" content="0; url='/DownGit'" /> -->
-<!-- <script>
-const url = "/DownGit";
-window.location.replace(url);
-window.location.href = url;
-window.location = url;
-</script> -->
-Your IP:<span id="user_ip"><span class="icon"><i class="loader" onclick="copy(this)"></i></span></span>
-<br>
-Your country:<span id="user_countrycode"><span class="icon"><i class="loader" onclick="copy(this)"></i></span></span>
+<!DOCTYPE html>
+<html lang="en">
 
-<script type="application/javascript">
-    function geoip(json) {
-        var userip = document.getElementById("user_ip");
-        var countrycode = document.getElementById("user_countrycode");
-        userip.textContent = json.ip;
-        countrycode.textContent = json.country_code;
-    }
-    function copy(that) {
-        var inp = document.createElement('input');
-        document.body.appendChild(inp)
-        inp.value = that.textContent
-        inp.select();
-        document.execCommand('copy', false);
-        inp.remove();
-    }
-</script>
-<script async src="https://get.geojs.io/v1/ip/geo.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        body {
+            display: table;
+        }
+
+        div {
+            font-size: 3.2vw;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .copy-text {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        ip:<span id="user_ip" onclick="copyToClipboard(this)" class="copy-text"><span class="icon"><i
+                    class="loader"></i></span></span>
+        <br>
+        country code:<span id="user_countrycode" onclick="copyToClipboard(this)" class="copy-text"><span class="icon"><i
+                    class="loader"></i></span></span>
+
+    </div>
+
+    <script type="application/javascript">
+        function geoip(json) {
+            var userip = document.getElementById("user_ip");
+            var countrycode = document.getElementById("user_countrycode");
+            userip.textContent = json.ip;
+            countrycode.textContent = json.country_code;
+        }
+        function copyToClipboard(that) {
+            var tempInput = document.createElement("textarea");
+            tempInput.value = that.textContent;
+            document.body.appendChild(tempInput);
+            // Select the text and copy it to the clipboard
+            tempInput.select();
+            document.execCommand("copy");
+            // Remove the temporary text area
+            document.body.removeChild(tempInput);
+            alert("Copied: " + that.textContent);
+        }
+    </script>
+    <script async src="https://get.geojs.io/v1/ip/geo.js"></script>
+</body>
+
+</html>
