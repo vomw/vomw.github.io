@@ -5,9 +5,9 @@ window.location.replace(url);
 window.location.href = url;
 window.location = url;
 </script> -->
-Your IP:<span id="user_ip"><span class="icon"><i class="loader"></i></span></span>
+Your IP:<span id="user_ip"><span class="icon"><i class="loader" onclick="copy(this)"></i></span></span>
 <br>
-Your country:<span id="user_countrycode"><span class="icon"><i class="loader"></i></span></span>
+Your country:<span id="user_countrycode"><span class="icon"><i class="loader" onclick="copy(this)"></i></span></span>
 
 <script type="application/javascript">
     function geoip(json) {
@@ -15,6 +15,14 @@ Your country:<span id="user_countrycode"><span class="icon"><i class="loader"></
         var countrycode = document.getElementById("user_countrycode");
         userip.textContent = json.ip;
         countrycode.textContent = json.country_code;
+    }
+    function copy(that) {
+        var inp = document.createElement('input');
+        document.body.appendChild(inp)
+        inp.value = that.textContent
+        inp.select();
+        document.execCommand('copy', false);
+        inp.remove();
     }
 </script>
 <script async src="https://get.geojs.io/v1/ip/geo.js"></script>
