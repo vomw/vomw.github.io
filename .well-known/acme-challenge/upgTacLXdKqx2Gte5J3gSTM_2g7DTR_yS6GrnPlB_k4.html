@@ -1,0 +1,17 @@
+<body>
+   <div id="file-content">Loading file...</div>
+
+   <script>
+       fetch('./string')
+           .then(response => {
+               console.log(response)
+               return response.text()
+           })
+           .then(data => {
+               document.getElementById('file-content').textContent = data;
+           })
+           .catch(error => {
+               document.getElementById('file-content').textContent = `Error loading file: ${error}`;
+           });
+   </script>
+</body>
