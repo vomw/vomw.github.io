@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Load Content from File without Extension</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    #content { border: 1px solid #ccc; padding: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Loaded Content</h1>
+  <div id="content">Loading...</div>
+
+  <script>
+    // Fetch the file named 'content' (without an extension)
+    fetch('upgTacLXdKqx2Gte5J3gSTM_2g7DTR_yS6GrnPlB_k4')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok: " + response.statusText);
+        }
+        return response.text();
+      })
+      .then(text => {
+        document.getElementById("content").innerText = text;
+      })
+      .catch(error => {
+        console.error("Error fetching the file:", error);
+        document.getElementById("content").innerText = "Error loading content.";
+      });
+  </script>
+</body>
+</html>
