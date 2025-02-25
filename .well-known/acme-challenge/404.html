@@ -1,1 +1,122 @@
-testonly2
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        body {
+            display: table;
+            background-color: black;
+        }
+
+        div {
+            color: grey;
+            font-size: 2vw;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        span {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        ip:&nbsp;<span id="ip" onclick="copyToClipboard(this)"><span class="icon"><i
+                    class="loader"></i></span></span><br>
+        country code:&nbsp;<span id="country_code" onclick="copyToClipboard(this)"><span class="icon"><i
+                    class="loader"></i></span></span><br>
+        region:&nbsp;<span id="region" onclick="copyToClipboard(this)"><span class="icon"><i
+                    class="loader"></i></span></span><br>
+        organization:&nbsp;<span id="organization" onclick="copyToClipboard(this)"><span class="icon"><i
+                    class="loader"></i></span></span><br>
+        timezone:&nbsp;<span id="timezone" onclick="copyToClipboard(this)"><span class="icon"><i
+                    class="loader"></i></span></span><br>
+        latitude,longitude:&nbsp;<span id="coordinate" onclick="copyToClipboard(this)"><span class="icon"><i
+                    class="loader"></i></span></span><br>
+        city:&nbsp;<span id="city" onclick="copyToClipboard(this)"><span class="icon"><i
+                    class="loader"></i></span></span><br>
+        asn:&nbsp;<span id="asn" onclick="copyToClipboard(this)"><span class="icon"><i
+                    class="loader"></i></span></span><br>
+        country:&nbsp;<span id="country" onclick="copyToClipboard(this)"><span class="icon"><i
+                    class="loader"></i></span></span><br>
+        area code:&nbsp;<span id="area_code" onclick="copyToClipboard(this)"><span class="icon"><i
+                    class="loader"></i></span></span><br>
+        organization name:&nbsp;<span id="organization_name" onclick="copyToClipboard(this)"><span class="icon"><i
+                    class="loader"></i></span></span><br>
+        country code3:&nbsp;<span id="country_code3" onclick="copyToClipboard(this)"><span class="icon"><i
+                    class="loader"></i></span></span><br>
+        continent code:&nbsp;<span id="continent_code" onclick="copyToClipboard(this)"><span class="icon"><i
+                    class="loader"></i></span></span><br>
+        accuracy:&nbsp;<span id="accuracy" onclick="copyToClipboard(this)"><span class="icon"><i
+                    class="loader"></i></span></span><br>
+    </div>
+    <script type="application/javascript">
+        function geoip(json) {
+            var ip = document.getElementById("ip");
+            var countrycode = document.getElementById("country_code");
+            var region = document.getElementById("region");
+            var organization = document.getElementById("organization");
+            var timezone = document.getElementById("timezone");
+            var coordinate = document.getElementById("coordinate");
+            var city = document.getElementById("city");
+            var asn = document.getElementById("asn");
+            var country = document.getElementById("country");
+            var areacode = document.getElementById("area_code");
+            var organizationname = document.getElementById("organization_name");
+            var countrycode3 = document.getElementById("country_code3");
+            var continentcode = document.getElementById("continent_code");
+            var accuracy = document.getElementById("accuracy");
+            ip.textContent = json.ip;
+            countrycode.textContent = json.country_code;
+            region.textContent = json.region;
+            organization.textContent = json.organization;
+            timezone.textContent = json.timezone;
+            coordinate.textContent = json.latitude + "," + json.longitude;
+            city.textContent = json.city;
+            asn.textContent = json.asn;
+            country.textContent = json.country;
+            areacode.textContent = json.area_code;
+            organizationname.textContent = json.organization_name;
+            countrycode3.textContent = json.country_code3;
+            continentcode.textContent = json.continent_code;
+            accuracy.textContent = json.accuracy;
+        }
+        function copyToClipboard(that) {
+            var tempInput = document.createElement("textarea");
+            tempInput.value = that.textContent;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            alert("Copied:" + that.textContent);
+        }
+    </script>
+    <script async src="https://get.geojs.io/v1/ip/geo.js"></script>
+    <script type="text/javascript">
+  (function(l) {
+    if (l.search[1] === '/' ) {
+      var decoded = l.search.slice(1).split('&').map(function(s) { 
+        return s.replace(/~and~/g, '&')
+      }).join('?');
+      window.history.replaceState(null, null,
+          l.pathname.slice(0, -1) + decoded + l.hash
+      );
+    }
+  }(window.location))
+</script>
+</body>
+
+</html>
