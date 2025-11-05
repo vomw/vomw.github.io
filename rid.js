@@ -83,7 +83,6 @@ function ridjs(mode, cnt) {
 
   let el = document.createElement('IMG');
   el.alt = mode;
-  el.referrerpolicy = "no-referrer";
   if (mode == 'banned') {
     el.src = `https://cors.eu.org/https://s.4cdn.org/image/error/${mode}/250/${mode}-${files[fid]}`;
     el.width = '250';
