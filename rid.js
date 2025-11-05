@@ -83,13 +83,14 @@ function ridjs(mode, cnt) {
 
   let el = document.createElement('IMG');
   el.alt = mode;
+  el.referrerpolicy = "no-referrer";
   if (mode == 'banned') {
-    el.src = `https://s.4cdn.org/image/error/${mode}/250/${mode}-${files[fid]}`;
+    el.src = `https://cors.eu.org/https://s.4cdn.org/image/error/${mode}/250/${mode}-${files[fid]}`;
     el.width = '250';
     el.setAttribute('style', 'float: right; padding-left: 10px; min-height: 150px;');
   }
   else {
-    el.src = `https://s.4cdn.org/image/error/${mode}/${mode}-${files[fid]}`;
+    el.src = `https://cors.eu.org/https://s.4cdn.org/image/error/${mode}/${mode}-${files[fid]}`;
   }
   return cnt.appendChild(el);
 }
