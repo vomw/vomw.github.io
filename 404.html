@@ -1,1 +1,35 @@
-testonly
+<html>
+
+<head>
+    <style type="text/css">
+        body {
+            text-align: center;
+            font: 13px/1.231 arial, helvetica, clean, sans-serif;
+        }
+
+        body,
+        h2 {
+            margin: 0;
+            padding: 0;
+        }
+
+        .boxcontent {
+            margin-top: 10px;
+        }
+
+        .boxcontent img {
+            max-width: 100%;
+        }
+    </style>
+    <script src="./rid.js"></script>
+</head>
+
+<body>
+    <h2>404 Not Found</h2>
+    <div id="js-rid" class="boxcontent"></div>
+    <script type="text/javascript">
+        ridjs('404', document.getElementById('js-rid'));
+    </script>
+</body>
+
+</html>
