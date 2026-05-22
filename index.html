@@ -335,7 +335,7 @@
                 settled = true;
                 cleanup();
                 setPanelError(lookup.key, "not reachable");
-            }, 8000);
+            }, 16000);
 
             window[callbackName] = (json) => {
                 if (settled) {
